@@ -19,58 +19,23 @@
       background-position: center;
     }
 
-    /* Dark overlay so white text pops on any image */
-    .content-overlay {
-      background: rgba(0, 0, 0, 0.58);
-      min-height: 100vh;
-    }
+    .content-overlay { background: rgba(0, 0, 0, 0.58); min-height: 100vh; }
+    .section-content { max-width: 800px; margin: 0 auto; padding: 2rem; color: #333; }
 
-    .section-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      color: #333;
-    }
-
-    /* Force white text + subtle glow on the hero copy */
+    /* Hero text always white */
     #home .section-content,
     #home .section-content h2,
-    #home .section-content p {
-      color: #fff !important;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.85);
-    }
+    #home .section-content p { color: #fff !important; text-shadow: 0 1px 3px rgba(0,0,0,0.85); }
 
-    /* ===== Header / Nav ===== */
-    nav {
-      background-color: rgba(0, 0, 0, 0.8);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: saturate(120%) blur(2px);
-    }
-    nav a { transition: color .3s; }
-    nav a:hover { color: #60a5fa; }
+    /* Header */
+    nav { background-color: rgba(0, 0, 0, 0.8); position: fixed; width: 100%; top: 0; z-index: 10; backdrop-filter: saturate(120%) blur(2px); }
+    nav a { transition: color .3s; } nav a:hover { color: #60a5fa; }
 
-    /* ===== Headline animation (left -> right falling) ===== */
+    /* Headline animation (left -> right falling) */
     .headline { display: inline-block; white-space: nowrap; line-height: 1.2; }
-    .headline span {
-      display: inline-block;
-      opacity: 0;
-      transform: translate(-60px, -40px) rotate(-8deg);
-      animation: fallInLTR 700ms ease-out forwards;
-      animation-delay: calc(var(--i) * 60ms); /* stagger */
-    }
-    @keyframes fallInLTR {
-      0%   { opacity: 0; transform: translate(-60px, -40px) rotate(-8deg); }
-      80%  { opacity: 1; transform: translate(4px, 2px) rotate(0deg); }
-      100% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
-    }
-
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .headline span { animation: none; opacity: 1; transform: none; }
-    }
+    .headline span { display: inline-block; opacity: 0; transform: translate(-60px, -40px) rotate(-8deg); animation: fallInLTR 700ms ease-out forwards; animation-delay: calc(var(--i) * 60ms); }
+    @keyframes fallInLTR { 0% {opacity:0; transform: translate(-60px,-40px) rotate(-8deg);} 80% {opacity:1; transform: translate(4px,2px) rotate(0);} 100% {opacity:1; transform: translate(0,0) rotate(0);} }
+    @media (prefers-reduced-motion: reduce) { .headline span { animation: none; opacity: 1; transform: none; } }
   </style>
 </head>
 <body class="font-sans">
@@ -106,27 +71,33 @@
     </div>
   </section>
 
-  <!-- About Section (Photo + compact bullet Summary) -->
+  <!-- About Section (Split layout, equal height like reference) -->
   <section id="about" class="py-16 bg-gray-50">
-    <div class="w-full max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center px-4 md:px-0">
-      <!-- Photo (face fully visible, smaller width) -->
-      <div class="flex justify-center">
-        <!-- If your file has a different name, change src below -->
-        <img src="amar.jpg" alt="Portrait of Amarnath Yeddula"
-             class="w-64 md:w-72 h-auto object-contain rounded-xl shadow-lg border border-gray-200">
-      </div>
+    <div class="w-full max-w-6xl mx-auto px-4 md:px-0">
+      <!-- One rounded container with two equal-height halves -->
+      <div class="rounded-2xl overflow-hidden shadow-xl grid md:grid-cols-2">
+        <!-- Left: Photo (same height as panel, centered on face) -->
+        <div class="h-[420px] md:h-[540px] bg-black">
+          <!-- If your image has a different name, change src -->
+          <img
+            src="amar.jpg"
+            alt="Portrait of Amarnath Yeddula"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
 
-      <!-- Summary bullets -->
-      <div class="bg-black text-white rounded-xl shadow-lg p-6 md:p-8">
-        <h2 class="text-xl md:text-2xl font-bold mb-4 text-blue-400">Summary</h2>
-        <ul class="list-disc list-inside space-y-3 text-sm md:text-base leading-relaxed">
-          <li><span class="font-semibold">AMETEK ($7B):</span> DVP Global Operations — led 8 plants worldwide; manufacturing & supply chain (sourcing, Global SIOP, OPEX); managed <span class="font-semibold">$970M</span> revenue scope.</li>
-          <li><span class="font-semibold">Kohler ($9B):</span> VP Supply Chain NA — Global SIOP, inventory (<span class="font-semibold">$576M</span>), warehousing & transportation, customer service; supported <span class="font-semibold">$3.5B</span> revenue, <span class="font-semibold">$550M</span> SC cost.</li>
-          <li><span class="font-semibold">Shaw Inc. ($6.5B):</span> Sr Director Supply Chain — Global SIOP; digitized global trade (150 suppliers/forwarders, sourcing & planning); managed <span class="font-semibold">$1.78B</span> inventory.</li>
-          <li><span class="font-semibold">Philips Lighting (€7B):</span> Head of Supply Chain, Canada — SIOP, warehousing/transport, customer service, OPEX; managed <span class="font-semibold">$45M</span> inventory; also Plant Manager (MS) with <span class="font-semibold">$150M</span> revenue.</li>
-          <li><span class="font-semibold">Whirlpool ($21B):</span> Sr Manager Supply Chain — APS implementation, MRP/SAP SD integration, 24/7 night‑stream design & operations, advanced analytics.</li>
-          <li><span class="font-semibold">Blue Yonder:</span> Sr IT Consultant — APS implementations & APS‑ERP integrations for Siemens, Alcatel, Philips Semiconductor, Dole Foods, BAT across US, Europe & Asia.</li>
-        </ul>
+        <!-- Right: Dark panel with concise bullets -->
+        <div class="bg-[#141414] text-white p-8 md:p-12 flex flex-col">
+          <h2 class="text-2xl font-bold mb-6">Key Achievements</h2>
+          <ul class="list-disc list-inside space-y-4 text-base leading-relaxed">
+            <li><span class="font-semibold">AMETEK ($7B):</span> DVP Ops — 8 plants; Global SIOP, sourcing, OPEX; scope <span class="font-semibold">$970M</span>.</li>
+            <li><span class="font-semibold">Kohler ($9B):</span> VP Supply Chain NA — SIOP, <span class="font-semibold">$576M</span> inventory, WH/transport & CS; <span class="font-semibold">$3.5B</span> revenue, <span class="font-semibold">$550M</span> SC cost.</li>
+            <li><span class="font-semibold">Shaw ($6.5B):</span> Sr Director — Global SIOP; digitized trade (150 partners); inventory <span class="font-semibold">$1.78B</span>.</li>
+            <li><span class="font-semibold">Philips Lighting (€7B):</span> Head of Supply Chain (Canada) — SIOP, WH/transport, CS, OPEX; <span class="font-semibold">$45M</span> inventory; Plant Mgr (MS) <span class="font-semibold">$150M</span>.</li>
+            <li><span class="font-semibold">Whirlpool ($21B):</span> Sr Manager — APS, MRP/SAP SD, 24/7 stream, analytics.</li>
+            <li><span class="font-semibold">Blue Yonder:</span> Sr IT Consultant — APS & ERP integrations for Siemens, Alcatel, Philips Semi, Dole, BAT (US/EU/Asia).</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -236,7 +207,7 @@
   </section>
 
   <script>
-    // Smooth scrolling for navigation links
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -244,7 +215,7 @@
       });
     });
 
-    // Split headline into spans (left->right stagger)
+    // Headline letter animation (left -> right)
     (function () {
       const h = document.getElementById('animated-headline');
       const text = h.textContent.trim();
