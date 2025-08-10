@@ -1,70 +1,245 @@
-<!-- Home Section -->
-<section id="home" class="content-overlay flex items-center justify-center min-h-screen">
-  <div class="section-content text-center">
-    <!-- Headline with animation -->
-    <h2 id="animated-headline" class="text-4xl font-bold mb-4 headline">
-      Hello, I'm Amarnath
-    </h2>
-    <p class="text-lg mb-6">
-      I'm a global operations and supply chain executive with over 20 years of experience leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool.
-      I’m passionate about aligning digital innovation with business impact—whether through SIOP, SAP transformations, or AI-powered supply chains.
-      This site is a reflection of my journey, my learnings, and my commitment to building inclusive, empowered teams.
-    </p>
-    <a href="Amarnath_yeddula.pdf" download class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-      Download CV
-    </a>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amarnath Yeddula - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #f0f4f8; /* Neutral background for non-home sections */
+      min-height: 100vh;
+    }
 
-<style>
-  /* Overlay for better white text readability */
-  .content-overlay {
-    background: rgba(0, 0, 0, 0.6);
-    min-height: 100vh;
-  }
-  #home .section-content {
-    color: white; /* White font */
-  }
+    /* ===== Hero / Home background ===== */
+    #home {
+      background-image: url('cargo_ship.jpg'); /* update path if needed */
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
 
-  /* Left-to-right falling letters */
-  .headline {
-    display: inline-block;
-    white-space: nowrap;
-  }
-  .headline span {
-    display: inline-block;
-    opacity: 0;
-    transform: translate(-60px, -40px) rotate(-8deg);
-    animation: fallInLTR 700ms ease-out forwards;
-    animation-delay: calc(var(--i) * 60ms);
-  }
-  @keyframes fallInLTR {
-    0% {
+    /* Dark overlay so white text pops on any image */
+    .content-overlay {
+      background: rgba(0, 0, 0, 0.58); /* tweak 0.50–0.70 to taste */
+      min-height: 100vh;
+    }
+
+    .section-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+
+    /* Force white text + subtle glow on the hero copy */
+    #home .section-content {
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.85);
+    }
+
+    /* ===== Header / Nav ===== */
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: saturate(120%) blur(2px);
+    }
+    nav a { transition: color .3s; }
+    nav a:hover { color: #60a5fa; }
+
+    /* ===== Headline animation (left -> right falling) ===== */
+    .headline { display: inline-block; white-space: nowrap; line-height: 1.2; }
+    .headline span {
+      display: inline-block;
       opacity: 0;
       transform: translate(-60px, -40px) rotate(-8deg);
+      animation: fallInLTR 700ms ease-out forwards;
+      animation-delay: calc(var(--i) * 60ms); /* stagger */
     }
-    80% {
-      opacity: 1;
-      transform: translate(4px, 2px) rotate(0deg);
+    @keyframes fallInLTR {
+      0%   { opacity: 0; transform: translate(-60px, -40px) rotate(-8deg); }
+      80%  { opacity: 1; transform: translate(4px, 2px) rotate(0deg); }
+      100% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
     }
-    100% {
-      opacity: 1;
-      transform: translate(0, 0) rotate(0deg);
-    }
-  }
-</style>
 
-<script>
-  // Split headline into spans for animation
-  (function () {
-    const h = document.getElementById('animated-headline');
-    const text = h.textContent.trim();
-    h.textContent = '';
-    [...text].forEach((ch, i) => {
-      const span = document.createElement('span');
-      span.textContent = ch === ' ' ? '\u00A0' : ch;
-      span.style.setProperty('--i', i);
-      h.appendChild(span);
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .headline span { animation: none; opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- Navigation -->
+  <nav class="p-4">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold text-white">Amarnath Yeddula</h1>
+      <div class="space-x-4">
+        <a href="#home" class="text-white hover:text-blue-400">Home</a>
+        <a href="#about" class="text-white hover:text-blue-400">About</a>
+        <a href="#experience" class="text-white hover:text-blue-400">Experience</a>
+        <a href="#education" class="text-white hover:text-blue-400">Education</a>
+        <a href="#contact" class="text-white hover:text-blue-400">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="content-overlay flex items-center justify-center min-h-screen">
+    <div class="section-content text-center">
+      <h2 id="animated-headline" class="text-4xl md:text-6xl font-extrabold mb-4 headline">
+        Hello, I'm Amarnath
+      </h2>
+      <p class="text-lg md:text-xl mb-6">
+        I'm a global operations and supply chain executive with over 20 years of experience leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool.
+        I’m passionate about aligning digital innovation with business impact—whether through SIOP, SAP transformations, or AI-powered supply chains.
+        This site is a reflection of my journey, my learnings, and my commitment to building inclusive, empowered teams.
+      </p>
+      <a href="Amarnath_yeddula.pdf" download class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded">
+        Download CV
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="flex items-center justify-center min-h-screen">
+    <div class="section-content">
+      <h2 class="text-3xl font-bold mb-4">About Me</h2>
+      <p class="mb-4">
+        Innovative and transformational leader in turnaround of business operations, with core strength in execution contributing to customer service, revenue growth, cost reduction, and improved cash flow. Passionate about defusing toxic cultures and transforming organizations to create a positive work atmosphere. Expertise in digital transformation through advanced supply chain solutions, ERP/MRP systems, Salesforce integration, and workflow digitization to drive efficiency.
+      </p>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="flex items-center justify-center min-h-screen">
+    <div class="section-content">
+      <h2 class="text-3xl font-bold mb-4">Professional Experience</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-semibold">DVP Global Operations, AMETEK MCT Division, US (2023 - Present)</h3>
+          <p>Part of P&L management, responsible for driving global operations across 8 plants (Europe, Asia, US, Mexico), managing $970M revenue, $239M inventory, global logistics, and customer service.</p>
+          <ul class="list-disc ml-6">
+            <li>Turnaround of division operations from crisis to stability.</li>
+            <li>Improved OTD by 17%, reduced past dues by 28%.</li>
+            <li>Implemented make/buy strategy, increasing low-cost region spend to >20% of revenue.</li>
+            <li>Drove OPEX for 1.5% YoY cost savings and end-to-end supply chain visibility.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">VP Supply Chain North America Operations, Kohler Kitchen and Bath, US (2021 - 2023)</h3>
+          <p>Led global supply chain operations, managing $3.5B revenue, 12 distribution centers, $576M inventory, and 1500 employees.</p>
+          <ul class="list-disc ml-6">
+            <li>Improved OTIF from 62% to 86%, reduced past dues from 18 to 3 days.</li>
+            <li>Increased warehouse productivity by 33.6%, revenue from $2.5B to $3.5B.</li>
+            <li>Reduced SC cost from 11.5% to 9.8% of sales.</li>
+            <li>Implemented SAP-IBP and advanced analytics for proactive supply chain management.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">Sr Director, SIOP and Transformation, Shaw Industries, US (2019 - 2021)</h3>
+          <p>Led SIOP transformation and global trade management for $5.5B revenue and $1.8B inventory.</p>
+          <ul class="list-disc ml-6">
+            <li>Improved forecast accuracy from 37% to 55%, inventory turns from 1.8 to 2.1.</li>
+            <li>Digitized global trade management for $2B business unit.</li>
+            <li>Implemented statistical safety stock and machine learning for optimized supply chain.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">Head of Supply Chain Operations, Philips Lighting, Canada (2016 - 2019)</h3>
+          <p>Managed commercial supply chain operations for $400M revenue, $38M SC cost, and 120 employees.</p>
+          <ul class="list-disc ml-6">
+            <li>Improved forecast accuracy from 43% to 63%, fill rate from 43.3% to 97%.</li>
+            <li>Reduced inventory from 19% to 12.8% of sales, generating $38M cash flow.</li>
+            <li>Implemented AI/BOT solutions for automated customer service.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">Director, Supply Chain and Manufacturing Operations, Philips Lighting, US (2012 - 2016)</h3>
+          <p>Managed end-to-end operations for $150M revenue, 500 employees, and $45M cost.</p>
+          <ul class="list-disc ml-6">
+            <li>Improved OTD from 67.3% to 95.4%, reduced inventory from 18% to 8.5%.</li>
+            <li>Achieved $84M fixed cost savings through factory consolidations.</li>
+            <li>Reduced cost of non-quality from 2.6% to 0.32% of sales.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">Senior Supply Chain Manager, Whirlpool Corp, US (2005 - 2012)</h3>
+          <p>Implemented Blue Yonder SCP, SAP APO, and data analytics for $15B revenue operations.</p>
+          <ul class="list-disc ml-6">
+            <li>Improved product availability from 87% to 93%, optimized inventory to 15 days.</li>
+            <li>Reduced inventory by $400M, saved $22M annually in transportation costs.</li>
+            <li>Supported systems integration for $5B Maytag acquisition.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">Consultant, Siemens & Blue Yonder, Germany, Hungary, France (2001 - 2004)</h3>
+          <p>Implemented supply chain solutions for Fortune 500 companies like Siemens, Alcatel, and Philips Semiconductors.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">Supply Planning Analyst, GSK, India (2000 - 2001)</h3>
+          <p>Supported MRP processes, production scheduling, and inventory management.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="flex items-center justify-center min-h-screen">
+    <div class="section-content">
+      <h2 class="text-3xl font-bold mb-4">Education</h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-xl font-semibold">MIT, Sloan School of Management, Boston, MA</h3>
+          <p>MBA, June 2019</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">Indian Institute of Management, Mumbai, India</h3>
+          <p>MS Supply Chain Management, June 1999</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold">Osmania University, Hyderabad, India</h3>
+          <p>BE, Civil Engineering, June 1998</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="flex items-center justify-center min-h-screen">
+    <div class="section-content text-center">
+      <h2 class="text-3xl font-bold mb-4">Contact</h2>
+      <p class="mb-4">Email: <a href="mailto:amar74@gmail.com" class="underline hover:text-blue-400">amar74@gmail.com</a></p>
+      <p class="mb-4">Phone: <a href="tel:+14707275281" class="underline hover:text-blue-400">+1-470-727-5281</a></p>
+      <p class="mb-4">LinkedIn: <a href="https://www.linkedin.com/in/profileamar/" class="underline hover:text-blue-400">profileamar</a></p>
+    </div>
+  </section>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
     });
-  })();
-</script>
+
+    // Split headline into spans (left->right stagger)
+    (function () {
+      const h = document.getElementById('animated-headline');
+      const text = h.textContent.trim();
+      h.textContent = '';
+      [...text].forEach((ch, i) => {
+        const span = document.createElement('span');
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        span.style.setProperty('--i', i);
+        h.appendChild(span);
+      });
+    })();
+  </script>
+</body>
+</html>
+
