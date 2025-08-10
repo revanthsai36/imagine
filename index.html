@@ -32,9 +32,11 @@
       color: #333;
     }
 
-    /* Force white text + subtle glow on the hero copy */
-    #home .section-content {
-      color: #fff;
+    /* Force white text + subtle glow on the hero copy (win over Tailwind) */
+    #home .section-content,
+    #home .section-content h2,
+    #home .section-content p {
+      color: #fff !important;
       text-shadow: 0 1px 3px rgba(0,0,0,0.85);
     }
 
@@ -90,10 +92,12 @@
   <!-- Home Section -->
   <section id="home" class="content-overlay flex items-center justify-center min-h-screen">
     <div class="section-content text-center">
-      <h2 id="animated-headline" class="text-4xl md:text-6xl font-extrabold mb-4 headline">
+      <!-- added text-white for Tailwind + animation spans created by JS -->
+      <h2 id="animated-headline" class="text-4xl md:text-6xl font-extrabold mb-4 headline text-white">
         Hello, I'm Amarnath
       </h2>
-      <p class="text-lg md:text-xl mb-6">
+      <!-- force paragraph to white too -->
+      <p class="text-lg md:text-xl mb-6 text-white">
         I'm a global operations and supply chain executive with over 20 years of experience leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool.
         I’m passionate about aligning digital innovation with business impact—whether through SIOP, SAP transformations, or AI-powered supply chains.
         This site is a reflection of my journey, my learnings, and my commitment to building inclusive, empowered teams.
@@ -242,4 +246,3 @@
   </script>
 </body>
 </html>
-
