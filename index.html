@@ -10,117 +10,124 @@
       background-color: #f0f4f8;
       min-height: 100vh;
     }
-
-    /* Hero section with gradient overlay */
+    /* Home background */
     #home {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('cargo_ship.jpg');
+      background-image: url('cargo_ship.jpg');
       background-size: cover;
-      background-attachment: fixed;
       background-position: center;
+      background-attachment: fixed;
+      position: relative;
     }
-
-    .section-content {
+    /* Overlay for readability */
+    #home::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+      z-index: 1;
+    }
+    #home .section-content {
+      position: relative;
+      z-index: 2;
       max-width: 900px;
-      margin: 0 auto;
+      margin: auto;
+      padding: 2rem;
+      color: white;
+      font-weight: 700;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    }
+    /* About section */
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: auto;
       padding: 2rem;
     }
-
-    /* Navigation styling */
-    nav {
-      background-color: rgba(0, 0, 0, 0.8);
-      position: fixed;
+    .about-image {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .about-image img {
       width: 100%;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: saturate(120%) blur(2px);
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      max-height: 500px;
     }
-    nav a { transition: color .3s; }
-    nav a:hover { color: #60a5fa; }
-
-    /* Animation for headline */
-    .headline { display: inline-block; white-space: nowrap; line-height: 1.2; }
-    .headline span {
-      display: inline-block;
-      opacity: 0;
-      transform: translate(-60px, -40px) rotate(-8deg);
-      animation: fallInLTR 700ms ease-out forwards;
-      animation-delay: calc(var(--i) * 60ms);
+    .about-text {
+      flex: 1 1 300px;
+      background: #111;
+      color: white;
+      padding: 2rem;
+      border-radius: 10px;
     }
-    @keyframes fallInLTR {
-      0%   { opacity: 0; transform: translate(-60px, -40px) rotate(-8deg); }
-      80%  { opacity: 1; transform: translate(4px, 2px) rotate(0deg); }
-      100% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+    .about-text h2 {
+      color: #3b82f6;
+      margin-bottom: 1rem;
     }
-    @media (prefers-reduced-motion: reduce) {
-      .headline span { animation: none; opacity: 1; transform: none; }
+    .about-text ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+    }
+    .about-text li {
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body class="font-sans">
 
-  <!-- Navigation -->
-  <nav class="p-4">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold text-white">Amarnath Yeddula</h1>
-      <div class="space-x-4">
-        <a href="#home" class="text-white hover:text-blue-400">Home</a>
-        <a href="#about" class="text-white hover:text-blue-400">About</a>
-        <a href="#experience" class="text-white hover:text-blue-400">Experience</a>
-        <a href="#education" class="text-white hover:text-blue-400">Education</a>
-        <a href="#contact" class="text-white hover:text-blue-400">Contact</a>
-      </div>
+<!-- Navigation -->
+<nav class="p-4 fixed w-full top-0 bg-black bg-opacity-80 z-10">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <h1 class="text-xl font-bold text-white">Amarnath Yeddula</h1>
+    <div class="space-x-4">
+      <a href="#home" class="text-white hover:text-blue-400">Home</a>
+      <a href="#about" class="text-white hover:text-blue-400">Key Achievements</a>
+      <a href="#experience" class="text-white hover:text-blue-400">Experience</a>
+      <a href="#education" class="text-white hover:text-blue-400">Education</a>
+      <a href="#contact" class="text-white hover:text-blue-400">Contact</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Home Section -->
-  <section id="home" class="flex items-center justify-center min-h-screen">
-    <div class="section-content text-center">
-      <h2 id="animated-headline" class="text-4xl md:text-6xl font-extrabold mb-6 headline text-white drop-shadow-lg">
-        Hello, I'm Amarnath
-      </h2>
-      <p class="text-lg md:text-2xl font-semibold leading-relaxed text-white drop-shadow-xl">
-        I'm a global operations and supply chain executive with over 20 years of experience 
-        leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool. 
-        I’m passionate about aligning digital innovation with business impact — whether 
-        through SIOP, SAP transformations, or AI-powered supply chains. 
-        This site is a reflection of my journey, my learnings, and my commitment 
-        to building inclusive, empowered teams.
-      </p>
+<!-- Home -->
+<section id="home" class="flex items-center justify-center min-h-screen">
+  <div class="section-content text-center">
+    <p class="text-xl md:text-2xl leading-relaxed">
+      I'm a global operations and supply chain executive with over 20 years of experience
+      leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool.
+      Passionate about aligning digital innovation with business impact—through SIOP, SAP
+      transformations, or AI-powered supply chains. This site reflects my journey,
+      learnings, and commitment to building inclusive, empowered teams.
+    </p>
+  </div>
+</section>
+
+<!-- About (Key Achievements) -->
+<section id="about" class="min-h-screen flex items-center">
+  <div class="about-container">
+    <div class="about-image">
+      <img src="amar.jpg" alt="Amarnath Yeddula">
     </div>
-  </section>
-
-  <!-- Example About Section -->
-  <section id="about" class="flex items-center justify-center min-h-screen">
-    <div class="section-content">
-      <h2 class="text-3xl font-bold mb-4">About Me</h2>
-      <p>
-        Innovative leader in turnaround of business operations with core strength in execution 
-        contributing to customer service, revenue growth, cost reduction, and improved cash flow.
-      </p>
+    <div class="about-text">
+      <h2 class="text-2xl font-bold">Key Achievements</h2>
+      <ul>
+        <li><strong>AMETEK ($7B):</strong> Led 8 plants globally; managed $970M revenue scope.</li>
+        <li><strong>Kohler ($9B):</strong> Oversaw $3.5B revenue; $550M supply chain cost.</li>
+        <li><strong>Shaw Inc. ($6.5B):</strong> Digitized trade with 150+ suppliers; $1.78B inventory.</li>
+        <li><strong>Philips Lighting (€7B):</strong> Managed $45M inventory; led $150M plant ops.</li>
+        <li><strong>Whirlpool ($21B):</strong> Implemented APS, SAP integration, advanced analytics.</li>
+        <li><strong>Blue Yonder:</strong> Delivered APS/ERP solutions for global Fortune 500 firms.</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Smooth Scroll Script -->
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    // Split headline into animated spans
-    (function () {
-      const h = document.getElementById('animated-headline');
-      const text = h.textContent.trim();
-      h.textContent = '';
-      [...text].forEach((ch, i) => {
-        const span = document.createElement('span');
-        span.textContent = ch === ' ' ? '\u00A0' : ch;
-        span.style.setProperty('--i', i);
-        h.appendChild(span);
-      });
-    })();
-  </script>
 </body>
 </html>
