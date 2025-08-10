@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background-color: #f0f4f8; /* Neutral background for non-home sections */
+      background-color: #f0f4f8;
       min-height: 100vh;
     }
 
@@ -21,7 +21,7 @@
 
     /* Dark overlay so white text pops on any image */
     .content-overlay {
-      background: rgba(0, 0, 0, 0.58); /* tweak 0.50–0.70 to taste */
+      background: rgba(0, 0, 0, 0.58);
       min-height: 100vh;
     }
 
@@ -92,11 +92,9 @@
   <!-- Home Section -->
   <section id="home" class="content-overlay flex items-center justify-center min-h-screen">
     <div class="section-content text-center">
-      <!-- added text-white for Tailwind + animation spans created by JS -->
       <h2 id="animated-headline" class="text-4xl md:text-6xl font-extrabold mb-4 headline text-white">
         Hello, I'm Amarnath
       </h2>
-      <!-- force paragraph to white too -->
       <p class="text-lg md:text-xl mb-6 text-white">
         I'm a global operations and supply chain executive with over 20 years of experience leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool.
         I’m passionate about aligning digital innovation with business impact—whether through SIOP, SAP transformations, or AI-powered supply chains.
@@ -108,38 +106,26 @@
     </div>
   </section>
 
-  <!-- About Section (Replaced with testimonial/profile split) -->
-  <section id="about" class="min-h-screen flex items-center justify-center bg-gray-50">
-    <div class="w-full max-w-6xl mx-auto grid md:grid-cols-2 gap-0 md:gap-8 px-4 md:px-0">
-      <!-- Left: Photo -->
-      <div class="relative">
-        <!-- Save your portrait as amar.jpg in the same folder as this HTML -->
-        <img
-          src="amar.jpg"
-          alt="Portrait of Amarnath Yeddula"
-          class="w-full h-full object-cover rounded-lg md:rounded-xl shadow-lg"
-        />
+  <!-- About Section (Photo + compact bullet Summary) -->
+  <section id="about" class="py-16 bg-gray-50">
+    <div class="w-full max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center px-4 md:px-0">
+      <!-- Photo (reduced height for a tighter section) -->
+      <div class="h-80 md:h-[26rem]">
+        <img src="amar.jpg" alt="Portrait of Amarnath Yeddula"
+             class="w-full h-full object-cover rounded-xl shadow-lg">
       </div>
 
-      <!-- Right: Dark quote panel -->
-      <div class="bg-[#141414] text-white rounded-lg md:rounded-xl shadow-lg p-6 md:p-10 flex flex-col justify-between">
-        <div>
-          <p class="text-2xl md:text-3xl leading-snug font-semibold">
-            “ I have successfully led division-wide turnarounds and scaled operations across the US, Mexico, Europe, and Asia. 
-          Highlights include raising OTIF by <span class="font-semibold">+7–24 pts</span> and cutting past-dues by <span class="font-semibold">~28%</span>; 
-          improving inventory turns by <span class="font-semibold">+20–40%</span> while freeing up significant cash; 
-          executing SAP/S4 and IBP programs with <span class="font-semibold">zero cutover delays</span>; 
-          building a SIOP cadence that aligned commercial, operations, and finance teams; 
-          increasing warehouse productivity by <span class="font-semibold">33%+</span>; 
-          and delivering multi-million-dollar savings through supplier development, make/buy strategies, and network redesign..”
-          </p>
-        </div>
-
-        <div class="mt-10">
-          <div class="font-bold text-lg">Chris de Jong</div>
-          <div class="text-sm opacity-80">VP Marketing</div>
-          <div class="mt-3 text-sm opacity-90">Portless</div>
-        </div>
+      <!-- Summary bullets -->
+      <div class="bg-black text-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-xl md:text-2xl font-bold mb-4 text-blue-400">Summary</h2>
+        <ul class="list-disc list-inside space-y-3 text-sm md:text-base leading-relaxed">
+          <li><span class="font-semibold">AMETEK ($7B):</span> DVP Global Operations — led 8 plants worldwide; manufacturing & supply chain (sourcing, Global SIOP, OPEX); managed <span class="font-semibold">$970M</span> revenue scope.</li>
+          <li><span class="font-semibold">Kohler ($9B):</span> VP Supply Chain NA — Global SIOP, inventory (<span class="font-semibold">$576M</span>), warehousing & transportation, customer service; supported <span class="font-semibold">$3.5B</span> revenue, <span class="font-semibold">$550M</span> SC cost.</li>
+          <li><span class="font-semibold">Shaw Inc. ($6.5B):</span> Sr Director Supply Chain — Global SIOP; digitized global trade (150 suppliers/forwarders, sourcing & planning); managed <span class="font-semibold">$1.78B</span> inventory.</li>
+          <li><span class="font-semibold">Philips Lighting (€7B):</span> Head of Supply Chain, Canada — SIOP, warehousing/transport, customer service, OPEX; managed <span class="font-semibold">$45M</span> inventory; also Plant Manager (MS) with <span class="font-semibold">$150M</span> revenue.</li>
+          <li><span class="font-semibold">Whirlpool ($21B):</span> Sr Manager Supply Chain — APS implementation, MRP/SAP SD integration, 24/7 night-stream design & operations, advanced analytics.</li>
+          <li><span class="font-semibold">Blue Yonder:</span> Sr IT Consultant — APS implementations & APS‑ERP integrations for Siemens, Alcatel, Philips Semiconductor, Dole Foods, BAT across US, Europe & Asia.</li>
+        </ul>
       </div>
     </div>
   </section>
