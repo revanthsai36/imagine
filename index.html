@@ -32,7 +32,7 @@
       color: #333;
     }
 
-    /* Force white text + subtle glow on the hero copy (win over Tailwind) */
+    /* Force white text + subtle glow on the hero copy */
     #home .section-content,
     #home .section-content h2,
     #home .section-content p {
@@ -67,7 +67,7 @@
       100% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
     }
 
-    /* Respect users who prefer reduced motion */
+    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
       .headline span { animation: none; opacity: 1; transform: none; }
     }
@@ -109,10 +109,11 @@
   <!-- About Section (Photo + compact bullet Summary) -->
   <section id="about" class="py-16 bg-gray-50">
     <div class="w-full max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center px-4 md:px-0">
-      <!-- Photo (reduced height for a tighter section) -->
-      <div class="h-80 md:h-[26rem]">
+      <!-- Photo (face fully visible, smaller width) -->
+      <div class="flex justify-center">
+        <!-- If your file has a different name, change src below -->
         <img src="amar.jpg" alt="Portrait of Amarnath Yeddula"
-             class="w-full h-full object-cover rounded-xl shadow-lg">
+             class="w-64 md:w-72 h-auto object-contain rounded-xl shadow-lg border border-gray-200">
       </div>
 
       <!-- Summary bullets -->
@@ -123,7 +124,7 @@
           <li><span class="font-semibold">Kohler ($9B):</span> VP Supply Chain NA — Global SIOP, inventory (<span class="font-semibold">$576M</span>), warehousing & transportation, customer service; supported <span class="font-semibold">$3.5B</span> revenue, <span class="font-semibold">$550M</span> SC cost.</li>
           <li><span class="font-semibold">Shaw Inc. ($6.5B):</span> Sr Director Supply Chain — Global SIOP; digitized global trade (150 suppliers/forwarders, sourcing & planning); managed <span class="font-semibold">$1.78B</span> inventory.</li>
           <li><span class="font-semibold">Philips Lighting (€7B):</span> Head of Supply Chain, Canada — SIOP, warehousing/transport, customer service, OPEX; managed <span class="font-semibold">$45M</span> inventory; also Plant Manager (MS) with <span class="font-semibold">$150M</span> revenue.</li>
-          <li><span class="font-semibold">Whirlpool ($21B):</span> Sr Manager Supply Chain — APS implementation, MRP/SAP SD integration, 24/7 night-stream design & operations, advanced analytics.</li>
+          <li><span class="font-semibold">Whirlpool ($21B):</span> Sr Manager Supply Chain — APS implementation, MRP/SAP SD integration, 24/7 night‑stream design & operations, advanced analytics.</li>
           <li><span class="font-semibold">Blue Yonder:</span> Sr IT Consultant — APS implementations & APS‑ERP integrations for Siemens, Alcatel, Philips Semiconductor, Dole Foods, BAT across US, Europe & Asia.</li>
         </ul>
       </div>
