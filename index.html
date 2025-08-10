@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amarnath Yeddula</title>
+  <style>
+    :root{
+      --brand:#0A66C2;
+      --brand-dark:#004182;
+      --header-bg:#000;
+      --text:#fff;
+      --body-bg:#dbe1e8;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color:#333;
+      background:var(--body-bg);
+    }
+    header{
+      background:var(--header-bg);
+      color:var(--text);
+      padding:20px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    header h1{margin:0;font-size:32px}
+    header h1 a{
+      color:var(--text);
+      text-decoration:underline;
+    }
+    nav a{
+      margin-left:24px;
+      color:var(--text);
+      text-decoration:none;
+      font-weight:700;
+    }
+    nav a:hover{text-decoration:underline}
+
+    .intro{
+      background:url('background.avif') no-repeat center center/cover;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      text-align:center;
+      color:#fff;
+    }
+    .intro::after{
+      content:"";
+      position:absolute;inset:0;
+      background:rgba(0,0,0,.5);
+    }
+    .intro-content{position:relative;z-index:1;max-width:1000px;padding:20px}
+    .intro-content h2{font-size:clamp(32px,6vw,64px);margin:0 0 16px}
+    .intro-content p{font-size:clamp(16px,2.2vw,22px);line-height:1.6;margin:0 auto}
+
+    .footer{background:var(--body-bg);padding:40px 0 60px;text-align:center}
+    .button{
+      display:inline-block;margin:10px;padding:14px 28px;background:#007BFF;
+      color:#fff;border:none;border-radius:30px;text-decoration:none;
+      font-weight:600;font-size:18px;transition:.2s;
+    }
+    .button:hover{background:#0056b3}
+
+    .icon-button{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:48px;height:48px;background:var(--brand);border-radius:50%;
+      vertical-align:middle;margin:10px;transition:background .2s;
+    }
+    .icon-button:hover{background:var(--brand-dark)}
+    .icon-button svg{width:24px;height:24px;fill:#fff;display:block}
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="./">Amarnath Yeddula</a></h1>
+    <nav>
+      <a href="./">Home</a>
+      <a href="resume.html">Resume</a>
+      <a href="research.html">Research</a>
+      <a href="outreach.html">Outreach</a>
+      <a href="personal.html">Personal</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <div class="intro-content">
+      <h2>Hello, I'm Amarnath</h2>
+      <p>
+        I'm a global operations and supply chain executive with over 20 years of experience leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool.
+        I’m passionate about aligning digital innovation with business impact—whether through SIOP, SAP transformations, or AI-powered supply chains.
+        This site is a reflection of my journey, my learnings, and my commitment to building inclusive, empowered teams.
+      </p>
+    </div>
+  </section>
+
+  <div class="footer">
+    <a class="button" href="Amarnath_yeddula.pdf" target="_blank">Download CV</a>
+    <a class="icon-button" href="https://www.linkedin.com/in/profileamar/" target="_blank" aria-label="LinkedIn">
+      <!-- Inline LinkedIn SVG (no external file needed) -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.944v5.662H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.368-1.85 3.6 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.957 20.452H3.714V9h3.243v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.728v20.543C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.728C24 .774 23.2 0 22.222 0z"/>
+      </svg>
+    </a>
+  </div>
+</body>
+</html>
