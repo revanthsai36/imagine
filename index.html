@@ -17,7 +17,8 @@
       background-position: center;
     }
     .content-overlay {
-      background: rgba(0, 0, 0, 0.65); /* Overlay for home section */
+      /* switched to a light overlay so black text reads well */
+      background: rgba(255, 255, 255, 0.55);
       min-height: 100vh;
     }
     .section-content {
@@ -26,8 +27,9 @@
       padding: 2rem;
       color: #333; /* Dark text for neutral background sections */
     }
+    /* Force black text in the home section */
     #home .section-content {
-      color: white; /* White text for home section with overlay */
+      color: #111;
     }
     nav {
       background-color: rgba(0, 0, 0, 0.8); /* Darker nav for contrast */
@@ -41,6 +43,35 @@
     }
     nav a:hover {
       color: #60a5fa;
+    }
+
+    /* ===== Falling letters animation for the headline ===== */
+    .headline {
+      display: inline-block;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .headline span {
+      display: inline-block;
+      opacity: 0;
+      transform: translate(60px, -40px) rotate(8deg);
+      animation: fallIn 700ms ease-out forwards;
+      /* each span will get its own delay via --i set in JS */
+      animation-delay: calc(var(--i) * 60ms);
+    }
+    @keyframes fallIn {
+      0% {
+        opacity: 0;
+        transform: translate(60px, -40px) rotate(8deg);
+      }
+      80% {
+        opacity: 1;
+        transform: translate(-4px, 2px) rotate(0deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg);
+      }
     }
   </style>
 </head>
@@ -62,13 +93,18 @@
   <!-- Home Section -->
   <section id="home" class="content-overlay flex items-center justify-center min-h-screen">
     <div class="section-content text-center">
-      <h2 class="text-4xl font-bold mb-4">Hello, I'm Amarnath</h2>
+      <!-- add 'headline' class; JS below will split into spans -->
+      <h2 id="animated-headline" class="text-4xl font-bold mb-4 headline">
+        Hello, I'm Amarnath
+      </h2>
       <p class="text-lg mb-6">
         I'm a global operations and supply chain executive with over 20 years of experience leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool.
         I’m passionate about aligning digital innovation with business impact—whether through SIOP, SAP transformations, or AI-powered supply chains.
         This site is a reflection of my journey, my learnings, and my commitment to building inclusive, empowered teams.
       </p>
-      <a href="Amarnath_yeddula.pdf" download class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Download CV</a>
+      <a href="Amarnath_yeddula.pdf" download class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+        Download CV
+      </a>
     </div>
   </section>
 
@@ -196,6 +232,20 @@
         });
       });
     });
+
+    // ===== Split the headline into spans and animate letters falling right->left =====
+    (function () {
+      const h = document.getElementById('animated-headline');
+      const text = h.textContent.trim();
+      h.textContent = ''; // clear
+      [...text].forEach((ch, i) => {
+        const span = document.createElement('span');
+        span.textContent = ch === ' ' ? '\u00A0' : ch; // preserve spaces
+        span.style.setProperty('--i', i); // used for staggered delay
+        h.appendChild(span);
+      });
+    })();
   </script>
 </body>
 </html>
+
