@@ -9,65 +9,56 @@
   <style>
     :root { --nav-h: 72px; }
     html { scroll-behavior: smooth; }
-    body { background:#f3f6fa; padding-top: var(--nav-h); }
+    /* Use a dynamic var (updated by JS) so sections don't hide under fixed nav */
+    body { background:#f3f6fa; padding-top: var(--nav-dyn, var(--nav-h)); }
+    section { scroll-margin-top: calc(var(--nav-dyn, var(--nav-h)) + 16px); }
 
     /* Fixed nav */
     nav {
       position: fixed;
       inset: 0 0 auto 0;
-      height: var(--nav-h);
       background: rgba(0,0,0,.85);
       backdrop-filter: saturate(120%) blur(4px);
       z-index: 50;
     }
-    section { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
-    /* Hero adjustments */
+    /* Hero */
     #home {
       min-height: calc(100vh - var(--nav-h));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
       background-image:
         linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.58)),
         url('cargo_ship.jpg');
-      background-size: cover;
-      background-position: center;
+      background-size: cover; background-position: center;
     }
-    @media (min-width: 768px) {
-      #home { background-attachment: fixed; }
-    }
-    .home-wrap { max-width: 1050px; padding: 2rem; color: #fff; }
-    .headline span {
-      display: inline-block;
-      opacity: 0;
-      transform: translate(-60px,-40px) rotate(-8deg);
-      animation: fallInLTR .7s ease-out forwards;
+    @media (min-width: 768px){ #home { background-attachment: fixed; } }
+    .home-wrap { max-width: 1050px; padding: 2rem; color:#fff; }
+
+    .headline span{
+      display:inline-block; opacity:0;
+      transform:translate(-60px,-40px) rotate(-8deg);
+      animation:fallInLTR .7s ease-out forwards;
       animation-delay: calc(var(--i) * 55ms);
-      text-shadow: 0 3px 10px rgba(0,0,0,.85);
+      text-shadow:0 3px 10px rgba(0,0,0,.85);
     }
-    @keyframes fallInLTR {
-      0% { opacity: 0; transform: translate(-60px,-40px) rotate(-8deg) }
-      80% { opacity: 1; transform: translate(6px,3px) rotate(0) }
-      100% { opacity: 1; transform: translate(0,0) rotate(0) }
+    @keyframes fallInLTR{
+      0%{opacity:0; transform:translate(-60px,-40px) rotate(-8deg)}
+      80%{opacity:1; transform:translate(6px,3px) rotate(0)}
+      100%{opacity:1; transform:translate(0,0) rotate(0)}
     }
-    .home-lead { font-weight: 700; text-shadow: 0 3px 10px rgba(0,0,0,.85); }
+    .home-lead{ font-weight:700; text-shadow:0 3px 10px rgba(0,0,0,.85); }
 
-    /* Fade-in animation */
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    /* Animations & active nav */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .8s ease-out, transform .8s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* Active nav link */
     .active-link { color: #60a5fa !important; }
 
-    /* Mobile menu toggle button */
+    /* Menus */
     .mobile-menu { display: none; }
-    @media (max-width: 768px) {
+    @media (max-width: 768px){
       .desktop-menu { display: none; }
       .mobile-menu { display: block; }
-      nav { height: auto; padding: 10px 0; }
     }
   </style>
 </head>
@@ -75,10 +66,10 @@
 
   <!-- NAV -->
   <nav class="px-4">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <div class="max-w-6xl mx-auto h-[72px] flex items-center justify-between">
       <a href="#home" class="text-white font-bold text-lg md:text-xl">Amarnath Yeddula</a>
-      
-      <!-- Desktop menu -->
+
+      <!-- Desktop -->
       <div class="space-x-4 desktop-menu">
         <a href="#home" class="nav-link text-white hover:text-blue-400">Home</a>
         <a href="#achievements" class="nav-link text-white hover:text-blue-400">Key Achievements</a>
@@ -87,10 +78,8 @@
         <a href="#contact" class="nav-link text-white hover:text-blue-400">Contact</a>
       </div>
 
-      <!-- Mobile menu toggle -->
-      <button id="menu-btn" class="mobile-menu text-white focus:outline-none">
-        ☰
-      </button>
+      <!-- Mobile toggle -->
+      <button id="menu-btn" class="mobile-menu text-white text-2xl leading-none p-2" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">☰</button>
     </div>
 
     <!-- Mobile dropdown -->
@@ -113,7 +102,9 @@
         Global Operations & Supply Chain Leader
       </h2>
       <p class="home-lead text-lg md:text-2xl leading-relaxed">
-        I’m a global operations and supply chain executive with over 20 years of experience leading transformation across AMETEK, Kohler, Shaw, Philips, and Whirlpool — aligning digital innovation with business impact through SIOP, SAP/ERP programs, and AI-powered visibility.
+        I’m a global operations and supply chain executive with over 20 years of experience leading transformation across
+        AMETEK, Kohler, Shaw, Philips, and Whirlpool—aligning digital innovation with business impact through SIOP,
+        SAP/ERP programs, and AI-powered visibility.
       </p>
     </div>
   </section>
@@ -123,22 +114,182 @@
     <div class="max-w-5xl mx-auto px-4">
       <div class="rounded-2xl overflow-hidden shadow-xl">
         <div class="grid md:grid-cols-2 gap-0">
-          <img src="amar.jpg" alt="Amarnath Yeddula" class="w-full h-64 md:h-full object-cover" loading="lazy" />
+          <!-- Left image -->
+          <img
+            src="amar.jpg"
+            alt="Amarnath Yeddula"
+            class="w-full h-64 md:h-full object-cover"
+            loading="lazy"
+          />
+          <!-- Right panel -->
           <div class="bg-zinc-900 text-white flex items-center">
             <div class="p-8 md:p-10">
               <h2 class="text-2xl md:text-3xl font-semibold mb-5">Key Achievements</h2>
               <ul class="space-y-3 text-[1.05rem] md:text-lg leading-relaxed">
-                <li><b>AMETEK ($7B):</b> Led 8 plants globally; managed <b>$970M</b> revenue scope.</li>
-                <li><b>Kohler ($9B):</b> Oversaw <b>$3.5B</b> revenue; <b>$550M</b> SC cost; <b>$576M</b> inventory.</li>
-                <li><b>Shaw ($6.5B):</b> Digitized trade with 150+ suppliers/forwarders; managed <b>$1.78B</b> inventory.</li>
-                <li><b>Philips Lighting (€7B):</b> Managed <b>$45M</b> inventory; led <b>$150M</b> plant ops.</li>
-                <li><b>Whirlpool ($21B):</b> Implemented APS, SAP integration, and analytics at scale.</li>
-                <li><b>Blue Yonder:</b> Delivered APS/ERP solutions for Fortune 500 firms.</li>
+                <li><span class="font-semibold">AMETEK ($7B):</span> Led 8 plants globally; managed <span class="font-semibold">$970M</span> revenue scope.</li>
+                <li><span class="font-semibold">Kohler ($9B):</span> Oversaw <span class="font-semibold">$3.5B</span> revenue; <span class="font-semibold">$550M</span> SC cost; <span class="font-semibold">$576M</span> inventory.</li>
+                <li><span class="font-semibold">Shaw ($6.5B):</span> Digitized trade with 150+ suppliers/forwarders; managed <span class="font-semibold">$1.78B</span> inventory.</li>
+                <li><span class="font-semibold">Philips Lighting (€7B):</span> Managed <span class="font-semibold">$45M</span> inventory; led <span class="font-semibold">$150M</span> plant ops.</li>
+                <li><span class="font-semibold">Whirlpool ($21B):</span> Implemented APS, SAP integration, and analytics at scale.</li>
+                <li><span class="font-semibold">Blue Yonder:</span> Delivered APS/ERP solutions for Fortune 500 firms.</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE (restored and responsive) -->
+  <section id="experience" class="py-16 bg-white fade-in">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8">Professional Experience</h2>
+
+      <ul class="space-y-4">
+        <!-- AMETEK -->
+        <li>
+          <a href="ametek.html"
+             class="group block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition
+                    hover:bg-blue-50 hover:border-blue-300 hover:shadow-md
+                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600">
+            <div class="flex items-start justify-between gap-4">
+              <p class="text-lg md:text-xl font-semibold text-gray-900">
+                DVP Global Operations — AMETEK MCT Division (2023–Present)
+              </p>
+              <span class="inline-flex shrink-0 items-center justify-center rounded-full bg-gray-100 p-2
+                           text-gray-500 transition group-hover:bg-blue-600 group-hover:text-white">
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                     viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"/>
+                </svg>
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Click to view responsibilities, tech, and outcomes</p>
+          </a>
+        </li>
+
+        <!-- Kohler -->
+        <li>
+          <a href="kohler.html"
+             class="group block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition
+                    hover:bg-blue-50 hover:border-blue-300 hover:shadow-md
+                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600">
+            <div class="flex items-start justify-between gap-4">
+              <p class="text-lg md:text-xl font-semibold text-gray-900">
+                VP Supply Chain — Kohler Kitchen &amp; Bath (2021–2023)
+              </p>
+              <span class="inline-flex shrink-0 items-center justify-center rounded-full bg-gray-100 p-2
+                           text-gray-500 transition group-hover:bg-blue-600 group-hover:text-white">
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                     viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"/>
+                </svg>
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Click to view responsibilities, tech, and outcomes</p>
+          </a>
+        </li>
+
+        <!-- Shaw -->
+        <li>
+          <a href="shaw.html"
+             class="group block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition
+                    hover:bg-blue-50 hover:border-blue-300 hover:shadow-md
+                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600">
+            <div class="flex items-start justify-between gap-4">
+              <p class="text-lg md:text-xl font-semibold text-gray-900">
+                Sr Director SIOP &amp; Transformation — Shaw Industries (2019–2021)
+              </p>
+              <span class="inline-flex shrink-0 items-center justify-center rounded-full bg-gray-100 p-2
+                           text-gray-500 transition group-hover:bg-blue-600 group-hover:text-white">
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                     viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"/>
+                </svg>
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Click to view responsibilities, tech, and outcomes</p>
+          </a>
+        </li>
+
+        <!-- Philips -->
+        <li>
+          <a href="philips.html"
+             class="group block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition
+                    hover:bg-blue-50 hover:border-blue-300 hover:shadow-md
+                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600">
+            <div class="flex items-start justify-between gap-4">
+              <p class="text-lg md:text-xl font-semibold text-gray-900">
+                Head of Supply Chain — Philips Lighting Canada (2016–2019)
+              </p>
+              <span class="inline-flex shrink-0 items-center justify-center rounded-full bg-gray-100 p-2
+                           text-gray-500 transition group-hover:bg-blue-600 group-hover:text-white">
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                     viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"/>
+                </svg>
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Click to view responsibilities, tech, and outcomes</p>
+          </a>
+        </li>
+
+        <!-- Whirlpool -->
+        <li>
+          <a href="whirlpool.html"
+             class="group block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition
+                    hover:bg-blue-50 hover:border-blue-300 hover:shadow-md
+                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600">
+            <div class="flex items-start justify-between gap-4">
+              <p class="text-lg md:text-xl font-semibold text-gray-900">
+                Sr Supply Chain Manager — Whirlpool Corp (2005–2012)
+              </p>
+              <span class="inline-flex shrink-0 items-center justify-center rounded-full bg-gray-100 p-2
+                           text-gray-500 transition group-hover:bg-blue-600 group-hover:text-white">
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                     viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"/>
+                </svg>
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Click to view responsibilities, tech, and outcomes</p>
+          </a>
+        </li>
+
+        <!-- Blue Yonder -->
+        <li>
+          <a href="blueyonder.html"
+             class="group block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition
+                    hover:bg-blue-50 hover:border-blue-300 hover:shadow-md
+                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600">
+            <div class="flex items-start justify-between gap-4">
+              <p class="text-lg md:text-xl font-semibold text-gray-900">
+                Consultant — Siemens &amp; Blue Yonder (2001–2004)
+              </p>
+              <span class="inline-flex shrink-0 items-center justify-center rounded-full bg-gray-100 p-2
+                           text-gray-500 transition group-hover:bg-blue-600 group-hover:text-white">
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                     viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"/>
+                </svg>
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-gray-600">Click to view responsibilities, tech, and outcomes</p>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -163,7 +314,7 @@
   </section>
 
   <script>
-    // Animated headline split
+    // Split headline into animated spans
     (function () {
       const h = document.getElementById('hi-amarnath');
       const text = h.textContent.trim();
@@ -178,11 +329,7 @@
 
     // Fade-in observer
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
@@ -192,26 +339,32 @@
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(sec => {
-        const top = sec.offsetTop - 100;
+        const top = sec.offsetTop - 120;
         const height = sec.offsetHeight;
-        if (pageYOffset >= top && pageYOffset < top + height) {
-          current = sec.getAttribute('id');
-        }
+        if (pageYOffset >= top && pageYOffset < top + height) current = sec.id;
       });
       navLinks.forEach(link => {
-        link.classList.remove('active-link');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active-link');
-        }
+        link.classList.toggle('active-link', link.getAttribute('href') === '#' + current);
       });
     });
 
-    // Mobile menu toggle
+    // Mobile menu toggle + dynamic nav height to avoid overlap
     const menuBtn = document.getElementById('menu-btn');
     const mobileNav = document.getElementById('mobile-nav');
+    function setNavHeightVar(){ document.documentElement.style.setProperty('--nav-dyn', document.querySelector('nav').offsetHeight + 'px'); }
+    function closeMobile(){ mobileNav.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); setNavHeightVar(); }
+    function openMobile(){ mobileNav.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); setNavHeightVar(); }
+
     menuBtn.addEventListener('click', () => {
-      mobileNav.classList.toggle('hidden');
+      if (mobileNav.classList.contains('hidden')) openMobile(); else closeMobile();
     });
+
+    // Close menu when clicking a link (and update height)
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
+
+    // Set initial dynamic height and on resize
+    window.addEventListener('load', setNavHeightVar);
+    window.addEventListener('resize', setNavHeightVar);
   </script>
 </body>
 </html>
