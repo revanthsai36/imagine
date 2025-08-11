@@ -111,34 +111,36 @@
 
   <!-- KEY ACHIEVEMENTS -->
   <section id="achievements" class="py-16 fade-in">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="rounded-2xl overflow-hidden shadow-xl">
-        <div class="grid md:grid-cols-2 gap-0">
-          <!-- Left image -->
-          <img
-            src="amar.jpg"
-            alt="Amarnath Yeddula"
-            class="w-full h-64 md:h-full object-cover"
-            loading="lazy"
-          />
-          <!-- Right panel -->
-          <div class="bg-zinc-900 text-white flex items-center">
-            <div class="p-8 md:p-10">
-              <h2 class="text-2xl md:text-3xl font-semibold mb-5">Key Achievements</h2>
-              <ul class="space-y-3 text-[1.05rem] md:text-lg leading-relaxed">
-                <li><span class="font-semibold">AMETEK ($7B):</span> Led 8 plants globally; managed <span class="font-semibold">$970M</span> revenue scope.</li>
-                <li><span class="font-semibold">Kohler ($9B):</span> Oversaw <span class="font-semibold">$3.5B</span> revenue; <span class="font-semibold">$550M</span> SC cost; <span class="font-semibold">$576M</span> inventory.</li>
-                <li><span class="font-semibold">Shaw ($6.5B):</span> Digitized trade with 150+ suppliers/forwarders; managed <span class="font-semibold">$1.78B</span> inventory.</li>
-                <li><span class="font-semibold">Philips Lighting (€7B):</span> Managed <span class="font-semibold">$45M</span> inventory; led <span class="font-semibold">$150M</span> plant ops.</li>
-                <li><span class="font-semibold">Whirlpool ($21B):</span> Implemented APS, SAP integration, and analytics at scale.</li>
-                <li><span class="font-semibold">Blue Yonder:</span> Delivered APS/ERP solutions for Fortune 500 firms.</li>
-              </ul>
-            </div>
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="rounded-2xl overflow-hidden shadow-xl">
+      <div class="grid md:grid-cols-2 gap-0">
+        <!-- Right panel: text FIRST on mobile, SECOND on desktop -->
+        <div class="bg-zinc-900 text-white flex items-center order-1 md:order-2">
+          <div class="p-8 md:p-10">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-5">Key Achievements</h2>
+            <ul class="space-y-3 text-[1.05rem] md:text-lg leading-relaxed">
+              <li><b>AMETEK ($7B):</b> Led 8 plants globally; managed <b>$970M</b> revenue scope.</li>
+              <li><b>Kohler ($9B):</b> Oversaw <b>$3.5B</b> revenue; <b>$550M</b> SC cost; <b>$576M</b> inventory.</li>
+              <li><b>Shaw ($6.5B):</b> Digitized trade with 150+ suppliers/forwarders; managed <b>$1.78B</b> inventory.</li>
+              <li><b>Philips Lighting (€7B):</b> Managed <b>$45M</b> inventory; led <b>$150M</b> plant ops.</li>
+              <li><b>Whirlpool ($21B):</b> Implemented APS, SAP integration, and analytics at scale.</li>
+              <li><b>Blue Yonder:</b> Delivered APS/ERP solutions for Fortune 500 firms.</li>
+            </ul>
           </div>
         </div>
+
+        <!-- Left image: SECOND on mobile, FIRST on desktop -->
+        <img
+          id="achv-img"
+          src="amar.jpg"
+          alt="Amarnath Yeddula"
+          class="w-full h-64 md:h-full object-cover order-2 md:order-1"
+          loading="lazy"
+        />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- EXPERIENCE (restored and responsive) -->
   <section id="experience" class="py-16 bg-white fade-in">
@@ -368,3 +370,4 @@
   </script>
 </body>
 </html>
+
