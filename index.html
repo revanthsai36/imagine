@@ -19,7 +19,7 @@
     }
     section{ scroll-margin-top: calc(var(--nav-h) + 16px); }
 
-    /* Hero section */
+    /* Hero */
     #home{
       min-height: calc(100vh - var(--nav-h));
       display:flex; align-items:center; justify-content:center;
@@ -30,7 +30,6 @@
       background-size:cover; background-position:center; background-attachment:fixed;
     }
     .home-wrap{ max-width:1050px; padding:2rem; color:#fff; }
-
     .headline{ display:inline-block; white-space:nowrap; line-height:1.05; }
     .headline span{
       display:inline-block; opacity:0;
@@ -44,20 +43,13 @@
       80%{opacity:1; transform:translate(6px,3px) rotate(0)}
       100%{opacity:1; transform:translate(0,0) rotate(0)}
     }
+    .home-lead{ font-weight:700; text-shadow:0 3px 10px rgba(0,0,0,.85); }
 
-    .home-lead{
-      font-weight:700; text-shadow:0 3px 10px rgba(0,0,0,.85);
-    }
-
-    /* Experience role links */
+    /* Links / Animations / Active nav */
     .role-link { transition: all 0.3s ease; cursor:pointer; }
     .role-link:hover { color:#3b82f6; text-decoration: underline; }
-
-    /* Fade-in animation */
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* Active nav link */
     .active-link { color: #60a5fa !important; }
   </style>
 </head>
@@ -94,18 +86,38 @@
     </div>
   </section>
 
-  <!-- KEY ACHIEVEMENTS -->
-  <section id="achievements" class="py-16 bg-gray-50 fade-in">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-6">Key Achievements</h2>
-      <ul class="list-disc list-inside space-y-3">
-        <li><strong>AMETEK ($7B):</strong> Led 8 plants globally; managed $970M revenue scope.</li>
-        <li><strong>Kohler ($9B):</strong> Oversaw $3.5B revenue; $550M SC cost, $576M inventory.</li>
-        <li><strong>Shaw ($6.5B):</strong> Digitized trade with 150+ suppliers; managed $1.78B inventory.</li>
-        <li><strong>Philips Lighting (€7B):</strong> Managed $45M inventory; led $150M plant operations.</li>
-        <li><strong>Whirlpool ($21B):</strong> Implemented APS, SAP integration, analytics.</li>
-        <li><strong>Blue Yonder:</strong> Delivered APS/ERP solutions for Fortune 500 firms.</li>
-      </ul>
+  <!-- KEY ACHIEVEMENTS (split layout) -->
+  <section id="achievements" class="py-16 bg-gray-100 fade-in">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8 items-stretch">
+        <!-- Left: Photo (uses your amar.jpg in root) -->
+        <figure class="rounded-2xl overflow-hidden shadow-xl bg-white">
+          <img
+            src="amar.jpg"
+            alt="Amarnath Yeddula"
+            class="w-full h-full md:h-[560px] object-cover"
+            loading="lazy"
+          />
+        </figure>
+
+        <!-- Right: Dark card with achievements -->
+        <div class="bg-zinc-900 text-zinc-100 rounded-2xl shadow-xl p-7 md:p-10 flex flex-col">
+          <h2 class="text-2xl md:text-3xl font-semibold mb-6">Key Achievements</h2>
+
+          <ul class="space-y-4 leading-relaxed text-[1.05rem] md:text-lg">
+            <li><span class="font-semibold">AMETEK ($7B):</span> Led 8 plants globally; managed <span class="font-semibold">$970M</span> revenue scope.</li>
+            <li><span class="font-semibold">Kohler ($9B):</span> Oversaw <span class="font-semibold">$3.5B</span> revenue; <span class="font-semibold">$550M</span> SC cost; <span class="font-semibold">$576M</span> inventory.</li>
+            <li><span class="font-semibold">Shaw ($6.5B):</span> Digitized trade with 150+ suppliers/forwarders; managed <span class="font-semibold">$1.78B</span> inventory.</li>
+            <li><span class="font-semibold">Philips Lighting (€7B):</span> Managed <span class="font-semibold">$45M</span> inventory; led <span class="font-semibold">$150M</span> plant operations.</li>
+            <li><span class="font-semibold">Whirlpool ($21B):</span> Implemented APS, SAP integration, and analytics at scale.</li>
+            <li><span class="font-semibold">Blue Yonder:</span> Delivered APS/ERP solutions for Fortune 500 firms.</li>
+          </ul>
+
+          <div class="mt-8 pt-6 border-t border-white/10 text-sm text-zinc-300">
+            Amarnath Yeddula • Global Operations & Supply Chain Leader
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -190,3 +202,4 @@
   </script>
 </body>
 </html>
+
