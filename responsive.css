@@ -42,6 +42,17 @@ img {
   width: 100%;
 }
 
+/* Helper: force good cropping when used on media blocks */
+.media-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* If you give your Achievements image id="achv-img", these rules improve mobile crop */
+#achv-img { object-fit: cover; object-position: center; }
+
 /* 4) Navigation bar */
 .nav {
   position: sticky;
@@ -96,25 +107,30 @@ img {
 
 /* 6) Mobile adjustments */
 @media (max-width: 768px) {
+  /* Hero: slightly higher focal point and controlled height */
   .hero img {
     height: 38vh;
     object-fit: cover;
+    object-position: center 30%;
   }
 
-  .container {
-    padding: 0 16px;
+  .container { padding: 0 16px; }
+  .card { padding: 16px; }
+  .stack-on-mobile { display: block; }
+
+  /* Achievements image: make it taller on phones for a nicer crop */
+  #achv-img {
+    height: 44vh;              /* taller than h-64 */
+    object-fit: cover;
+    object-position: center 20%;
   }
 
-  .card {
-    padding: 16px;
-  }
-
-  .stack-on-mobile {
-    display: block;
-  }
+  /* Utilities to control mobile order without changing desktop */
+  .order-mobile-1 { order: 1; }
+  .order-mobile-2 { order: 2; }
 }
 
-/* 7) Two-column grid for desktop */
+/* 7) Two‑column grid for desktop */
 @media (min-width: 769px) {
   .grid-2 {
     display: grid;
@@ -122,3 +138,13 @@ img {
     gap: 28px;
   }
 }
+
+/* 8) Extra-small nav comfort (prevents cramped wrap) */
+@media (max-width: 480px) {
+  .nav ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
