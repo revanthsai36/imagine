@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blue Yonder – Consultant</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #f9fafb; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- NAV -->
+  <nav class="px-4 py-4 bg-black bg-opacity-85 fixed top-0 w-full z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-white font-bold">Home</a>
+      <a href="index.html#experience" class="text-white">Experience</a>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <section class="max-w-5xl mx-auto px-4 pt-24 fade-in">
+    <h1 class="text-3xl font-bold mb-4">Consultant – Siemens & Blue Yonder (2001–2004)</h1>
+    
+    <h2 class="text-xl font-semibold mb-2">Role Overview</h2>
+    <p class="mb-6">
+      As a Consultant with Siemens and Blue Yonder, I implemented advanced planning systems (APS) 
+      and integrated ERP solutions for major Fortune 500 companies across the US, Europe, and Asia.
+      My focus was on delivering tailored supply chain solutions to optimize operations and improve efficiency.
+    </p>
+
+    <h2 class="text-xl font-semibold mb-2">Key Achievements</h2>
+    <ul class="list-disc pl-6 mb-6 space-y-2">
+      <li>Implemented APS solutions for clients including Siemens, Alcatel, and Philips Semiconductors.</li>
+      <li>Integrated APS with ERP systems to improve planning and execution workflows.</li>
+      <li>Enhanced supply chain visibility for clients in manufacturing and distribution sectors.</li>
+    </ul>
+
+    <h2 class="text-xl font-semibold mb-2">Technologies & Skills Used</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="bg-white p-4 shadow rounded">Blue Yonder APS</div>
+      <div class="bg-white p-4 shadow rounded">ERP Integration</div>
+      <div class="bg-white p-4 shadow rounded">Supply Chain Optimization</div>
+      <div class="bg-white p-4 shadow rounded">Project Management</div>
+      <div class="bg-white p-4 shadow rounded">Client Engagement</div>
+      <div class="bg-white p-4 shadow rounded">Global Deployment</div>
+    </div>
+  </section>
+
+  <script>
+    // Fade-in animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
